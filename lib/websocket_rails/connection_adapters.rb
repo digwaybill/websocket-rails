@@ -42,7 +42,7 @@ module WebsocketRails
         @delegate   = WebsocketRails::DelegationController.new
         @delegate.instance_variable_set(:@_env, request.env)
         @delegate.instance_variable_set(:@_request, request)
-        @ip_address = @env.to_s[/REMOTE_ADDR.*?\,/][/[\d\.]+/]
+        @ip_address = @env.to_s[/HTTP_X_FORWARDED_FOR.*?\,/][/[\d\.]+/]
 
         start_api_key_timer
         start_ping_timer
@@ -225,3 +225,4 @@ module WebsocketRails
     end
   end
 end
+
