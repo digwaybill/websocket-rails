@@ -81,10 +81,14 @@ module WebsocketRails
       end
 
       def trigger(event)
-        #p "EVENT S: " + event.to_s
-        #p "EVENT DATA: " + event.data
-        # supports sending strings and only strings
-        send event.data[:message]
+        begin
+          send event.data[:message]
+        rescue
+          # using p, because I am not sure if logger.info works from within websocket-rails
+          p "UNKNOWN ERROR OCCURED IN TRIGGER"
+          # need to test the line below
+          # send {type: "ERROR", content: "UNKNOWN ERROR OCCURED."}.to_json
+        end
       end
 
       def flush
