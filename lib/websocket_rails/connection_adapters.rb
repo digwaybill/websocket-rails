@@ -84,8 +84,7 @@ module WebsocketRails
         begin
           send event.data[:message]
         rescue
-          # using p, because I am not sure if logger.info works from within websocket-rails
-          p "UNKNOWN ERROR OCCURED IN TRIGGER"
+          logger.info "UNKNOWN ERROR OCCURED IN TRIGGER"
           # need to test the line below
           # send {type: "ERROR", content: "UNKNOWN ERROR OCCURED."}.to_json
         end
