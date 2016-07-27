@@ -11,7 +11,7 @@ gem "selenium-webdriver"
 gem "coffee-script"
 gem "thin"
 gem "eventmachine"
-gem "faye-websocket"
+gem "faye-websocket", '0.7.2'
 gem "simplecov"
 gem "ruby_gntp"
 gem "guard"
